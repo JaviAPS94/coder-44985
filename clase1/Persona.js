@@ -21,4 +21,4 @@ perssona1.saludar();
 perssona1.getEspecie();
 
 persona2.saludar();
-persona2.getEspecie()
+persona2.getEspecie();
