@@ -8,7 +8,7 @@ const entradas = Object.entries(objeto);
 
 console.log(entradas);
 
-const claves = Object.keys(objeto);
+const claves = !Object.keys(objeto).includes('nombre');
 
 console.log(claves);
 
