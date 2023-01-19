@@ -1,0 +1,17 @@
+{
+	"contenidoString": "{\n  \"name\": \"desafios\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"type\": \"module\",\n  \"main\": \"desafio1.js\",\n  \"scripts\": {\n    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n  },\n  \"keywords\": [],\n  \"author\": \"\",\n  \"license\": \"ISC\"\n}\n",
+	"contenidoObj": {
+		"name": "desafios",
+		"version": "1.0.0",
+		"description": "",
+		"type": "module",
+		"main": "desafio1.js",
+		"scripts": {
+			"test": "echo \"Error: no test specified\" && exit 1"
+		},
+		"keywords": [],
+		"author": "",
+		"license": "ISC"
+	},
+	"size": 245
+}
