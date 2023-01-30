@@ -30,4 +30,17 @@ app.get('/query/params', (req, res) => {
     res.send(usuariosFiltrados);
 })
 
+app.get('/store-schedule', (req, res) => {
+    const { genero } = req.params;
+    const { edad } = req.query;
+
+    if(!genero || (genero !== 'M' && genero !== 'F')) return res.send(usuarios);
+
+    if(!edad) return res.send(usuarios);
+
+    const filteredUsers = usuarios.filter(u=>u.genero === genero && u.edad > Number(edad));
+
+    res.send(filteredUsers);
+})
+
 app.listen(8080, () => console.log('Listening on port 8080'));

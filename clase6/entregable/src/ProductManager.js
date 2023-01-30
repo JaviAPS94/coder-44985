@@ -15,7 +15,13 @@ export default class ProductManager {
   }
 
   async getAll() {
-    return [{id: 1, name: 'papel'}]
+    try {
+      const products = await promises.readFile(this.ruta, 'utf-8');
+      return JSON.parse(products);
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
   }
 
   async deleteById(id) {
