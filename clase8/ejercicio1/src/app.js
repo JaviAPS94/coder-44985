@@ -21,27 +21,6 @@ app.use(express.urlencoded({extended: true}));
 
 app.use('/static', express.static(`${__dirname}/public`));
 
-cart = {
-    id: 1,
-    products: [{
-        id: 1,
-        quantity: 3
-    },
-    {
-        id: 2,
-        quantity: 1
-    },
-    {
-        id: 3,
-        quantity: 1
-    }]
-}
-[
-    {
-        id:
-    }
-]
-
 app.use('/api/users', usersRouter);
 app.use('/api/pets', petsRouter);
 
