@@ -1,0 +1,45 @@
+db.coll.find({name:{$not: {$eq: 'Max'}}})
+db.coll.find({$or: [{year: 1958}, {year: 1959}]})
+db.coll.find({name: {$lt: 10}})
+db.coll.find({name: {$lt: 10}})
+db.coll.find({name: {$lt: 10}})
+db.coll.find({name: {$gt: 10}})
+
+db.coll.find({$and: [{age: {$gt: 10},{age: {$lt: 20}}]})
+db.coll.find({$or: [{name: 'Alex', {name: 'Javier'}]})
+db.coll.find({name: {$exists: true}})
+db.mascotas.find({nombre: {$in: ['prueba1', 'prueba2', 'test']}})
+db.mascotas.find({nombre: {$nin: ['prueba1', 'prueba2', 'test']}})
+
+COMANDOS EJERCICIO
+
+db.mascotas.find({}, {nombre: 1}).sort({edad: 1}).skip(2).limit(1)
+
+UPDATE
+
+db.mascotas.update({_id: ObjectId('63fd1da743893ff85e50cddb')}, {$set: {nombre: 'updated', edad: 2}})
+db.mascotas.update({_id: ObjectId('63fd1da743893ff85e50cddb')}, {$unset: {nombre: ''}})
+db.mascotas.update({_id: ObjectId('63fd1da743893ff85e50cddb')}, {$rename: {nombre: 'nombres'}})
+db.mascotas.update({_id: ObjectId('63fd1da743893ff85e50cddb')}, {$inc: {edad: 2}})
+db.mascotas.update({_id: ObjectId('63fd1da743893ff85e50cddb')}, {$min: {edad: 2}})
+db.mascotas.update({_id: ObjectId('63fd1da743893ff85e50cddb')}, {$max: {edad: 2}})
+db.mascotas.update({_id: ObjectId('63fd1da743893ff85e50cddb')}, {$mul: {edad: 2}})
+
+EJERCICIO
+
+db.clientes.insertMany([{nombre: 'Pablo', edad: 25}, {nombre: 'Juan', edad: 22}, {nombre: 'Lucia', edad: 25}, {nombre: 'Juan', edad: 29}, {nombre: 'Fede', edad: 35}])
+db.clientes.find().sort({edad: -1})
+db.clientes.find().sort({edad: 1}).limit(1)
+db.clientes.find().sort({edad: 1}).skip(1).limit(1)
+db.clientes.find({nombre: 'Juan'})
+db.clientes.find({$and: [{nombre: 'Juan'}, {edad: 29}]})
+db.clientes.find({$or: [{nombre: 'Juan'}, {nombre: 'Lucia'}]})
+db.clientes.find({edad: {$gt: 25}})
+db.clientes.find({edad: {$lte: 25}})
+db.clientes.find({edad:{$ne: 25}})
+
+db.clientes.find({$and: [{edad: {$gte: 26}}, {edad: {$lte: 35}}]})
+db.clientes.update({_id: ObjectId('63fd2a0a43893ff85e50cde2')}, {$set: {edad: 36}})
+db.clientes.updateMany({edad: 25}, {$set: {edad: 26}})
+db.clientes.deleteMany({nombre: 'Juan'})
+db.clientes.deleteMany({})

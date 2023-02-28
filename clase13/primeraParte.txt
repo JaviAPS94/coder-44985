@@ -1,0 +1,19 @@
+COMANDOS
+
+Show dbs
+Use db
+Db
+Show collections
+db.createCollection(name)
+Db.dropDatabase()
+db.collection.drop()
+db.collection.estimatedDocumentCount()
+db.collection.countDocuments(opt)
+db.usuarios.find({age: 20})
+
+COMANDOS PRIMER EJERCICIO
+
+Use baseCRUD
+Db.createCollection(‘mascotas’)
+db.mascotas.insertMany([{}]) 
+db.collection.countDocuments(opt)
