@@ -1,3 +1,5 @@
+import * as businessService from '../services/business.service.js'
+
 export const getBusiness = async (req, res) => {
     try {
         const result = await businessService.getBusiness();
