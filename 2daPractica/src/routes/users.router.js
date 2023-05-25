@@ -7,7 +7,7 @@ const usersManager = new UsersManager();
 
 export default class UsersRouter extends Router {
     init() {
-        this.post('/login', ["PUBLIC"], async (req, res) => {
+        this.post('/login', ["PUBLIC"], null, async (req, res) => {
             const { email, password } = req.body;
             const user = await usersManager.getByEmail(email);
         
@@ -27,7 +27,7 @@ export default class UsersRouter extends Router {
             res.sendSuccess({ accessToken });
         });
         
-        this.post('/register', ["PUBLIC"], async (req, res) => {
+        this.post('/register', ["PUBLIC"], null, async (req, res) => {
             try {
                 const { first_name, last_name, rol, email, password } = req.body;
                 

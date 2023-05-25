@@ -1,0 +1,1 @@
+const PRIVATE_KEY = 'coderSecret';
