@@ -1,0 +1,117 @@
+paths:
+  /api/users:
+    get:
+      summary: Obtiene todos los usuarios
+      tags:
+        - Users
+      responses:
+        "200":
+          description: Los usuarios fueron obtenidos satisfactoriamente de la base de datos
+          content:
+            appplication/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/User'
+        "500":
+          description: Error interno del servidor, usualmente generado por una query defectuosa o fallo de conexión a la base de datos
+  /api/users/{uid}:
+    get:
+      summary: Obtiene un solo usuario a partir de su uid
+      tags:
+        - Users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: El id del usuario
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: El usuario fue obtenido satisfactoriamente de la base de datos
+          content:
+            appplication/json:
+              schema:
+                $ref: '#components/schemas/User'
+        "500":
+          description: Error interno del servidor, usualmente generado por una query defectuosa o fallo de conexión a la base de datos
+    put:
+      summary: Actualizar el usuario a partir de su uid
+      tags:
+        - Users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: El id del usuario
+          schema:
+            $type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/updateUser'
+      responses:
+        "200":
+          description: El usuario fue actualizado satisfactoriamente en la base de datos
+        "404":
+          description: El usuario no fue encontrado en la base de datos
+        "500":
+          description: Error interno del servidor, usualmente generado por una query defectuosa o fallo de conexión a la base de datos
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado de mongodb
+        first_name:
+          type: String
+          description: Nombre del usuario
+        last_name:
+          type: String
+          description: Apellido del usuario
+        email:
+          type: String
+          description: Correo del usuario
+        password:
+          type: String
+          description: Contraseña del usuario
+        role:
+          type: String
+          description: Rol del usuario
+      example:
+        _id: ObjectId("45689NSJKDFN345")
+        first_name: Alex
+        last_name: Pinaida
+        email: ap@gmail.com
+        password: 34567sadnfk45
+        role: admin
+  requestBodies:
+    updateUser:
+      type: object
+      properties:
+        first_name:
+          type: String
+          description: Nombre del usuario
+        last_name:
+          type: String
+          description: Apellido del usuario
+        email:
+          type: String
+          description: Correo del usuario
+        password:
+          type: String
+          description: Contraseña del usuario
+        role:
+          type: String
+          description: Rol del usuario
+      example:
+        first_name: Alex
+        last_name: Pinaida
+        email: ap@gmail.com
+        password: 34567sadnfk45
+        role: admin

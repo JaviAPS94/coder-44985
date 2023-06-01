@@ -1,0 +1,72 @@
+paths:
+  /api/sessions/register:
+    post:
+      summary: Registrar un nuevo usuario en el sistema
+      tags:
+        - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/registerUser'
+      responses:
+        "200":
+          description: El usuario fue registrado correctamente
+        "400":
+          description: Error valores incompletos o el usuario ya fue registrado
+          content:
+            appplication/json:
+              schema:
+                oneOf:
+                  - $ref: '#components/responseBodies/registerUserIncompleteValues'
+                  - $ref: '#components/responseBodies/alreadyRegisterUser'
+        "500":
+          description: Error interno del servidor, usualmente generado por una query defectuosa o fallo de conexión a la base de datos
+components:
+  requestBodies:
+    registerUser:
+      type: object
+      properties:
+        first_name:
+          type: String
+          description: Nombre del usuario
+        last_name:
+          type: String
+          description: Apellido del usuario
+        email:
+          type: String
+          description: Correo del usuario
+        password:
+          type: String
+          description: Contraseña del usuario
+      example:
+        first_name: Alex
+        last_name: Pinaida
+        email: ap@gmail.com
+        password: 1234
+  responseBodies:
+    registerUserIncompleteValues:
+      type: object
+      properties:
+        status:
+          type: String
+          description: Estado de la petición
+        error:
+          type: String
+          description: Mensaje de error
+      example:
+        status: error
+        error: Incomplete values
+    alreadyRegisterUser:
+      type: object
+      properties:
+        status:
+          type: String
+          description: Estado de la petición
+        error:
+          type: String
+          description: Mensaje de error
+      example:
+        status: error
+        error: User already exists
