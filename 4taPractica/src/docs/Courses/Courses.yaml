@@ -1,0 +1,58 @@
+paths:
+  /api/courses/{courseId}/student/{studentId}:
+    put:
+      summary: Asigna un estudiante a un curso en específico
+      tags:
+        - Courses
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          desciption: El id del curso
+          schema:
+            $type: String
+        - name: studentId
+          in: path
+          required: true
+          desciption: El id del estudiante
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Los estudiantes fueron asignado correctamente al curso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Course'
+        "404":
+          description: El estudiante o el curso no se encuentran agregados al sistema
+        "500":
+          description: Error interno del servidor, usualmente generado por una query defectuosa
+components:
+  schemas:
+    Course:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado de mongodb
+        title:
+          type: String
+          description: El título del curso
+        description:
+          type: String
+          description: La descripción del curso
+        teacher:
+          type: String
+          description: Es esl profesor asignado al curso
+        students:
+          type: array
+          description: Son los estudiantes que tienen asignado un curso
+      example:
+        _id: ObjectId('u3452345')
+        title: Coder
+        description: House
+        teacher: Profesor ejemplo
+        students: []
